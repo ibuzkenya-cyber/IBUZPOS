@@ -439,20 +439,23 @@ function openFullPolicyFromNotice(){closePolicyNotice();if(typeof showPage==='fu
 
 </script>
 <script type="module">
-import { initializeApp, getApps } from 'https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js';
-import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js';
-import { getFirestore, doc, getDoc, setDoc, onSnapshot, serverTimestamp } from 'https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js';
-
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 // Replace every placeholder below with the Web app config from Firebase Console > Project settings > Your apps.
 const firebaseConfig = {
-  apiKey: 'AIzaSyAzNCrlrvm-Rer5_hxqftsEU34r7vtFnvg',
-  authDomain: 'ibuzpos-system.firebaseapp.com',
-  projectId: 'ibuzpos-system',
-  appId: '1:877940650724:web:60869fd11a642f3ff872f1',
-  storageBucket: 'ibuzpos-system.firebasestorage.app',
-  messagingSenderId: '877940650724',
-  measurementId: 'G-DXZM9J7WV1'
+ apiKey: "AIzaSyAzNCrlrvm-Rer5_hxqftsEU34r7vtFnvg",
+  authDomain: "ibuzpos-system.firebaseapp.com",
+  projectId: "ibuzpos-system",
+  storageBucket: "ibuzpos-system.firebasestorage.app",
+  messagingSenderId: "877940650724",
+  appId: "1:877940650724:web:111e55631a3ae8f5f872f1",
+  measurementId: "G-DDBKCSWN0F"
 };
+  // Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 const ADMIN_EMAIL = 'speedwayb26@gmail.com';
 const CONFIG_READY = !Object.values(firebaseConfig).some(v => String(v).includes('PASTE_'));
 let auth=null, dbCloud=null, stopCloudListener=null, currentUser=null, saveTimer=null, applyingRemote=false;
